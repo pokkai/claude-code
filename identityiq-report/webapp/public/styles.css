@@ -1,0 +1,106 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --border: #d9dde3;
+  --text: #1c2733;
+  --muted: #5f6b7a;
+  --accent: #0b5cad;
+  --accent-soft: #e8f1fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.user { color: var(--muted); font-size: 0.9rem; }
+
+.content { max-width: 72rem; margin: 1.5rem auto; padding: 0 1.5rem; }
+
+.muted { color: var(--muted); }
+
+.crumbs { font-size: 0.9rem; margin-bottom: 1rem; }
+.crumbs a { color: var(--accent); text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.card h2 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+.card .meta { color: var(--muted); font-size: 0.85rem; }
+
+a.item-link { color: var(--accent); text-decoration: none; font-weight: 600; }
+a.item-link:hover { text-decoration: underline; }
+
+table.report {
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+table.report th, table.report td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  white-space: nowrap;
+}
+table.report th { background: var(--accent-soft); position: sticky; top: 0; }
+.table-wrap { overflow: auto; max-height: 70vh; border-radius: 8px; }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.toolbar h1 { font-size: 1.2rem; margin: 0; flex: 1; }
+
+.btn {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.btn:hover { filter: brightness(1.1); }
+
+.notice {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  color: var(--text);
+}
+
+.error { color: #a11a1a; }
+
+.spacer { height: 1rem; }
