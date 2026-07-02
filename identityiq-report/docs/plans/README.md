@@ -21,3 +21,4 @@ New plans must follow the same convention.
 | Plan | Scope |
 |---|---|
 | [2026-07-02-report-post-rule-and-dashboard-app.md](2026-07-02-report-post-rule-and-dashboard-app.md) | Initial delivery: IdentityIQ report POST rule + receiver/dashboard web app |
+| [2026-07-02-webapp-regression-tests-and-simplification.md](2026-07-02-webapp-regression-tests-and-simplification.md) | Spec-driven regression test suite for the web app + simplicity review |

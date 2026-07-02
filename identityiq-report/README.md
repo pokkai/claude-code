@@ -147,13 +147,28 @@ Dashboards are plain ES modules — no build step:
 
 1. Create `webapp/public/dashboards/<name>.js` exporting
    `render(container, ctx)`; fetch `ctx.dataUrl` for the CSV
-   (`parseCsv` in `generic-table.js` is reusable).
+   (`parseCsv` in `csv.mjs` is reusable).
 2. Register it in `webapp/public/dashboards/registry.js` under the exact
    report type name (the sanitized report name shown in the UI).
 
 Unregistered types automatically get the generic table view.
 `role-relationships.js` is the prepared stub for the business role / IT
 role / entitlement report.
+
+### Running the tests
+
+The regression suite uses Node's built-in test runner — no extra
+dependencies:
+
+```bash
+cd webapp
+npm test
+```
+
+It boots the real server against a temp data directory and exercises the
+public contract over HTTP: ingest auth/storage/size-cap/rate-limit, the
+NTLM identification handshake, the viewer API (including traversal
+attempts), security headers, startup validation, and the CSV parser.
 
 ## Manual end-to-end test
 

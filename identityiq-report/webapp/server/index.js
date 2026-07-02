@@ -49,15 +49,8 @@ app.get('/api/me', (req, res) => {
 app.get('/api/reports', listReports);
 app.get('/api/reports/:type/:file', getReport);
 
-app.use(express.static(path.join(__dirname, '..', 'public'), { index: 'index.html' }));
-
-// SPA fallback for hash-less deep links; API misses stay JSON 404s.
-app.use((req, res) => {
-  if (req.path.startsWith('/api/')) {
-    return res.status(404).json({ error: 'Not found' });
-  }
-  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
-});
+// The SPA is hash-routed, so static serving covers every real path.
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 fs.mkdirSync(config.dataDir, { recursive: true });
 

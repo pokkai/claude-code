@@ -8,7 +8,7 @@
  * data is still inspectable.
  *
  * Expected implementation sketch:
- *   - fetch(ctx.dataUrl), parse with parseCsv from generic-table.js
+ *   - fetch(ctx.dataUrl), parse with parseCsv from csv.mjs
  *   - group rows by business role, then IT role, aggregate entitlements
  *   - render an expandable tree or adjacency diagram
  */

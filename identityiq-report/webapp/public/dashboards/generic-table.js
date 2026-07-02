@@ -2,40 +2,13 @@
  * Default dashboard: renders any report CSV as a table, capped at MAX_ROWS
  * to keep large reports responsive (full data via the Download button).
  * All cell content is inserted via textContent, never innerHTML, so CSV
- * data cannot inject markup.
+ * data cannot inject markup. Parsing lives in csv.js.
  */
 
 import { el } from '/app.js';
+import { parseCsv } from './csv.mjs';
 
 const MAX_ROWS = 500;
-
-// Minimal RFC 4180 parser: quoted fields, escaped quotes, CR/LF endings.
-export function parseCsv(text, maxRows = Infinity) {
-  const rows = [];
-  let field = '';
-  let row = [];
-  let inQuotes = false;
-
-  const pushField = () => { row.push(field); field = ''; };
-  const pushRow = () => { pushField(); rows.push(row); row = []; };
-
-  for (let i = 0; i < text.length; i++) {
-    const ch = text[i];
-    if (inQuotes) {
-      if (ch === '"') {
-        if (text[i + 1] === '"') { field += '"'; i++; }
-        else inQuotes = false;
-      } else field += ch;
-    } else if (ch === '"') inQuotes = true;
-    else if (ch === ',') pushField();
-    else if (ch === '\n') {
-      pushRow();
-      if (rows.length > maxRows) return { rows, truncated: true };
-    } else if (ch !== '\r') field += ch;
-  }
-  if (field !== '' || row.length > 0) pushRow();
-  return { rows, truncated: false };
-}
 
 export async function render(container, ctx) {
   container.replaceChildren(el('p', { class: 'muted', text: 'Loading report…' }));
