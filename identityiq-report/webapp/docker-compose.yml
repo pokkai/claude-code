@@ -1,0 +1,15 @@
+services:
+  identityiq-report:
+    build: .
+    restart: unless-stopped
+    ports:
+      # Bind to localhost: a TLS-terminating reverse proxy must sit in front.
+      - "127.0.0.1:8080:8080"
+    environment:
+      INGEST_TOKEN: ${INGEST_TOKEN:?set INGEST_TOKEN in .env}
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-200}
+    volumes:
+      - report-data:/data
+
+volumes:
+  report-data:

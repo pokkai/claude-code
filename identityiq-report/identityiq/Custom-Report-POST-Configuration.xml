@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Custom PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Custom name="Report POST Configuration">
+  <Description>
+    Configuration for the "Report Result POST" rule.
+
+    targetUrl        - full URL of the receiving endpoint, e.g.
+                       https://reports.example.com/api/ingest
+    bearerToken      - shared secret sent as "Authorization: Bearer ...".
+                       Store it IIQ-encrypted: run "iiq encrypt &lt;secret&gt;"
+                       and paste the encrypted value here.
+    reportName       - name of the report TaskDefinition; used only when the
+                       rule runs standalone (not as a completion rule).
+    connectTimeoutMs - HTTP connect timeout in milliseconds.
+    readTimeoutMs    - HTTP read timeout in milliseconds.
+  </Description>
+  <Attributes>
+    <Map>
+      <entry key="targetUrl" value="https://CHANGE-ME.example.com/api/ingest"/>
+      <entry key="bearerToken" value="CHANGE-ME-encrypted-token"/>
+      <entry key="reportName" value="CHANGE-ME Report Name"/>
+      <entry key="connectTimeoutMs" value="30000"/>
+      <entry key="readTimeoutMs" value="300000"/>
+    </Map>
+  </Attributes>
+</Custom>

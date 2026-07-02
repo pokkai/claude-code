@@ -1,0 +1,18 @@
+{
+  "name": "identityiq-report-receiver",
+  "version": "1.0.0",
+  "description": "Receives IdentityIQ report CSVs and serves per-report dashboards",
+  "private": true,
+  "type": "commonjs",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
